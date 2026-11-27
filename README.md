@@ -7,10 +7,7 @@
 
 A college Full Stack Development project for displaying and managing department-wise notices at ABESEC Ghaziabad.
 
-## Live deployment
 
-- **Render URL:** `ADD_YOUR_RENDER_URL_AFTER_DEPLOYMENT`
-- **Health check:** `ADD_YOUR_RENDER_URL_AFTER_DEPLOYMENT/health`
 
 ## Current implemented features
 
