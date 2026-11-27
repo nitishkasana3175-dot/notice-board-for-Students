@@ -83,13 +83,19 @@ The current version stores notices in a local JSON file. Render's default servic
 
 ## Demo login credentials and user roles
 
-**Not available in the current uploaded code.** The current application does not yet implement Admin, Faculty or Student authentication or role-based access control. Therefore, no valid login usernames/passwords can be provided at this stage. Do not submit invented credentials as working accounts.
+## Demo login credentials and user roles
 
-| Role | Username | Password | Status |
-|---|---|---|---|
-| Admin | Not implemented | Not implemented | Pending authentication feature |
-| Faculty | Not implemented | Not implemented | Pending authentication feature |
-| Student | Not implemented | Not implemented | Pending authentication feature |
+Login is required. Authentication uses bcrypt-hashed passwords and JWT, and permissions are enforced on the server.
+
+| Role    | Username  | Password        | Permissions                          |
+| ------- | --------- | --------------- | ------------------------------------ |
+| Admin   | `admin`   | `Admin@12345`   | View, Add and Delete notices         |
+| Faculty | `faculty` | `Faculty@12345` | View and Add notices                 |
+| Student | `student` | `Student@12345` | View notices only                    |
+
+**How to log in:** run `npm start`, open `http://localhost:3000`, and log in as Admin first.
+
+> These are demo-only credentials. Change them before real use by setting `ADMIN_PASSWORD`, `FACULTY_PASSWORD` and `STUDENT_PASSWORD` in the environment.
 
 ## Team
 
