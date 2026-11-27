@@ -176,9 +176,6 @@ app.use((err, req, res, next) => {
 
 // ---------- Startup ----------
 async function start() {
-  if (isProd && !process.env.DATABASE_URL) {
-    throw new Error("DATABASE_URL is required in production (Render's filesystem is not persistent).");
-  }
   auth.secret(); // fail fast if JWT_SECRET is missing in production
   await db.init();
 
