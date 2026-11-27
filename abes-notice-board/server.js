@@ -1,4 +1,4 @@
-// ABES Department-Wise Digital Notice Board - Backend
+﻿// ABES Department-Wise Digital Notice Board - Backend
 // Node.js + Express. Notices are stored in data/notices.json
 
 const express = require("express");
@@ -33,9 +33,19 @@ function writeNotices(notices) {
 
 function isValidDate(value) {
   if (!/^\d{4}-\d{2}-\d{2}$/.test(value)) return false;
-  const d = new Date(value + "T00:00:00");
-  return !isNaN(d.getTime()) && d.toISOString().slice(0, 10) === value;
+
+  const [year, month, day] = value.split("-").map(Number);
+  const d = new Date(year, month - 1, day);
+
+  return d.getFullYear() === year &&
+         d.getMonth() === month - 1 &&
+         d.getDate() === day;
 }
+
+// ---------- Health check (Render deployment) ----------
+app.get("/health", (req, res) => {
+  res.json({ status: "ok", service: "ABES Digital Notice Board" });
+});
 
 // ---------- REST API ----------
 
@@ -137,3 +147,4 @@ app.use((err, req, res, next) => {
 app.listen(PORT, () => {
   console.log("ABES Notice Board running at http://localhost:" + PORT);
 });
+
