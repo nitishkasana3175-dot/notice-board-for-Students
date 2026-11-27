@@ -99,7 +99,7 @@ The current version stores notices in a local JSON file. Render's default servic
 - **Navneet Kumar Verma**
 - **Nitish Kasana**
 - **Branch:** CSE
-- **Section:** Add the team's confirmed section
+- **Section:** 22
 
 **Full Stack Development Team**  
 © 2026 ABESEC Ghaziabad. All Rights Reserved.
