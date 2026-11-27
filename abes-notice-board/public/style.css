@@ -438,3 +438,12 @@ button, input, select, textarea { font-family: inherit; font-size: 1rem; }
 @media (prefers-reduced-motion: reduce) {
   * { transition: none !important; }
 }
+
+/* ---------- Authentication UI ---------- */
+.topbar-actions { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; justify-content: flex-end; }
+.user-chip { display: flex; align-items: center; gap: 8px; background: var(--white); border: 1px solid var(--line); border-radius: 999px; padding: 6px 12px; }
+.user-name { font-weight: 600; color: var(--ink); font-size: 0.9rem; }
+.role-badge { font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; padding: 2px 8px; border-radius: 999px; background: var(--blue-soft); color: var(--blue-dark); }
+.role-admin { background: #fde8ea; color: var(--danger); }
+.role-faculty { background: #e6f6ee; color: #1a7f4b; }
+@media (max-width: 640px) { .topbar-actions { justify-content: flex-start; width: 100%; } }

@@ -24,7 +24,7 @@
 
       <nav class="nav" id="nav" aria-label="Filter notices by department"></nav>
 
-      <div class="sidebar-foot">Admin Dashboard</div>
+      <div class="sidebar-foot" id="sidebarFoot">Dashboard</div>
     </aside>
 
     <!-- Main content -->
@@ -38,7 +38,14 @@
           <h1>Notice Board</h1>
           <p class="subtitle" id="viewTitle">Showing notices from all departments</p>
         </div>
-        <button class="btn btn-primary" id="openAddBtn" type="button">+ Add Notice</button>
+        <div class="topbar-actions">
+          <div class="user-chip" id="userChip" hidden>
+            <span class="user-name" id="userName"></span>
+            <span class="role-badge" id="roleBadge"></span>
+          </div>
+          <button class="btn btn-primary" id="openAddBtn" type="button" hidden>+ Add Notice</button>
+          <button class="btn btn-ghost" id="logoutBtn" type="button">Logout</button>
+        </div>
       </header>
 
       <section class="stats" aria-label="Summary">

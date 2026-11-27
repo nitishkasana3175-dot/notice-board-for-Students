@@ -1,0 +1,26 @@
+[
+  {
+    "id": "mwylmofxuxiq",
+    "name": "System Admin",
+    "username": "admin",
+    "email": "admin@abes.demo",
+    "role": "admin",
+    "password_hash": "$2a$12$CDSKGjc0Es6RBaLmUn85kOHWdlHPeqXdw14jMKgj.P9xYvH72PDqS"
+  },
+  {
+    "id": "mwylmoqh8bay",
+    "name": "Demo Faculty",
+    "username": "faculty",
+    "email": "faculty@abes.demo",
+    "role": "faculty",
+    "password_hash": "$2a$12$tXUne4dR8ATqT2.u.oF/ROUN9p3yXOdFZXzbhs0PxSCc3cFAnrHQa"
+  },
+  {
+    "id": "mwylmp025jqb",
+    "name": "Demo Student",
+    "username": "student",
+    "email": "student@abes.demo",
+    "role": "student",
+    "password_hash": "$2a$12$4JXTorrWmvqva8y4F9UmwejJC/EwsW2kuiTfT8cIaugVCZmicEPG."
+  }
+]

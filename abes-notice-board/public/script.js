@@ -6,6 +6,7 @@ const DEPARTMENTS = ["CSE", "IT", "ECE", "ME", "Civil"];
 
 let notices = [];          // all notices from the server
 let currentFilter = "All"; // "All" or one department
+let currentUser = null;    // set after /api/auth/me succeeds
 
 // ---------- Element references ----------
 const nav = document.getElementById("nav");
@@ -28,6 +29,11 @@ const cancelBtn = document.getElementById("cancelBtn");
 const saveBtn = document.getElementById("saveBtn");
 const formError = document.getElementById("formError");
 const toast = document.getElementById("toast");
+const logoutBtn = document.getElementById("logoutBtn");
+const userChip = document.getElementById("userChip");
+const userName = document.getElementById("userName");
+const roleBadge = document.getElementById("roleBadge");
+const sidebarFoot = document.getElementById("sidebarFoot");
 
 let toastTimer = null;
 
@@ -71,11 +77,35 @@ async function request(url, options) {
     data = null;
   }
 
+  if (response.status === 401) {
+    window.location.replace("/login.html"); // session expired or not logged in
+    throw new Error("Please log in again.");
+  }
   if (!response.ok) {
     throw new Error((data && data.error) || "Request failed (status " + response.status + ").");
   }
   return data;
 }
+
+// ---------- Role helpers ----------
+function canAdd() { return currentUser && (currentUser.role === "admin" || currentUser.role === "faculty"); }
+function canDelete() { return currentUser && currentUser.role === "admin"; }
+
+function applyRoleUI() {
+  const label = currentUser.role.charAt(0).toUpperCase() + currentUser.role.slice(1);
+  userName.textContent = currentUser.name;
+  roleBadge.textContent = label;
+  roleBadge.className = "role-badge role-" + currentUser.role;
+  userChip.hidden = false;
+  sidebarFoot.textContent = label + " Dashboard";
+  openAddBtn.hidden = !canAdd();
+}
+
+async function logout() {
+  try { await fetch("/api/auth/logout", { method: "POST" }); } catch (e) {}
+  window.location.replace("/login.html");
+}
+logoutBtn.addEventListener("click", logout);
 
 // ---------- Loading data ----------
 async function loadNotices() {
@@ -163,7 +193,7 @@ function createCard(notice) {
     deleteNotice(notice, deleteBtn);
   });
 
-  foot.appendChild(deleteBtn);
+  if (canDelete()) foot.appendChild(deleteBtn); // admin only (the server enforces this too)
 
   card.appendChild(top);
   card.appendChild(title);
@@ -288,4 +318,13 @@ addForm.addEventListener("submit", async function (event) {
 retryBtn.addEventListener("click", loadNotices);
 
 // ---------- Start ----------
-loadNotices();
+(async function init() {
+  try {
+    const me = await request("/api/auth/me");
+    currentUser = me.user;
+  } catch (err) {
+    return; // request() already redirects to the login page on 401
+  }
+  applyRoleUI();
+  loadNotices();
+})();

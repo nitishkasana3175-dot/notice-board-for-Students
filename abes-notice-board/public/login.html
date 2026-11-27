@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Login - ABES Digital Notice Board</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="login.css" />
+</head>
+<body class="login-body">
+  <main class="login-wrap">
+    <section class="login-hero" aria-hidden="false">
+      <div class="brand">
+        <div class="brand-logo" aria-hidden="true">A</div>
+        <div>
+          <div class="brand-name">ABESEC Ghaziabad</div>
+          <div class="brand-sub">Digital Notice Board</div>
+        </div>
+      </div>
+      <h1>Department-Wise Digital Notice Board System</h1>
+      <p>Stay updated with the latest CSE, IT, ECE, ME and Civil department notices in one place.</p>
+    </section>
+
+    <section class="login-card" aria-labelledby="loginTitle">
+      <h2 id="loginTitle">Welcome back</h2>
+      <p class="login-sub">Sign in to continue</p>
+
+      <form id="loginForm" novalidate>
+        <fieldset class="role-select">
+          <legend>Login as</legend>
+          <label class="role-option"><input type="radio" name="role" value="student" checked /><span>Student</span></label>
+          <label class="role-option"><input type="radio" name="role" value="faculty" /><span>Faculty</span></label>
+          <label class="role-option"><input type="radio" name="role" value="admin" /><span>Admin</span></label>
+        </fieldset>
+
+        <div class="field">
+          <label for="login">Username or Email</label>
+          <input id="login" name="login" type="text" autocomplete="username" placeholder="e.g. student" required />
+        </div>
+
+        <div class="field">
+          <label for="password">Password</label>
+          <div class="pw-wrap">
+            <input id="password" name="password" type="password" autocomplete="current-password" placeholder="Enter your password" required />
+            <button type="button" class="pw-toggle" id="pwToggle" aria-label="Show password" aria-pressed="false">Show</button>
+          </div>
+        </div>
+
+        <p class="form-error" id="loginError" role="alert" hidden></p>
+
+        <button class="btn btn-primary btn-block" id="loginBtn" type="submit">Login</button>
+      </form>
+
+      <p class="login-foot">© 2026 ABESEC Ghaziabad. All Rights Reserved.</p>
+    </section>
+  </main>
+  <script src="login.js"></script>
+</body>
+</html>
